@@ -27,6 +27,7 @@ common/TermAbs_parametricity.v # need the parametricity plugin
 
 # L1g
 L1g/compile.v
+L1g/optimize.v
 L1g/term.v
 L1g/program.v
 L1g/wndEval.v

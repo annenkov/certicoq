@@ -1,4 +1,5 @@
 Require Export L1g.toplevel L2k.toplevel L4.toplevel L6.toplevel L7.toplevel.
+Require Import L1g.optimize.
 Require Import compcert.lib.Maps.
 Require Import ZArith.
 Require Import Common.Common Common.compM Common.Pipeline_utils.
@@ -23,7 +24,9 @@ Definition CertiCoq_pipeline (p : global_context * term) :=
 
 (** * The main CertiCoq pipeline, with MetaCoq's erasure and C-code generation *)
 Definition pipeline (p : Template.Ast.program) :=
-  p <- erase_PCUIC p ;; 
+  p <- erase_PCUIC p ;;
+  o <- get_options ;;
+  p <- (if (dev o =? 1)%nat then dearg_lbox p else ret p) ;;
   p <- CertiCoq_pipeline p ;;
   compile_Clight p.
 
@@ -62,7 +65,7 @@ Definition make_opts (cps : bool)
 
 Definition printProg :=
   fun prog file =>
-    L6_to_Clight.print_Clight_dest_names (snd prog) (cps.M.elements (fst prog)) file.
+    L6_to_Clight.print_Clight_dest_names (snd prog) (cps.M.elements (fst prog)) file. 
 
 Definition compile (opts : Options) (p : Template.Ast.program) :=
   run_pipeline _ _ opts p pipeline.

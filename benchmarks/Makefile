@@ -10,6 +10,7 @@ EXEC=$(TESTS) $(patsubst %, %_cps, $(TESTS)) $(patsubst %, %_cps_opt, $(TESTS)) 
 
 default: copy exec run
 all: copy lib tests exec run
+alldearg: copy lib deargtests exec run
 
 .PHONY: all default clean lib cleanlib tests run copy $(TESTS)
 
@@ -55,6 +56,10 @@ cleanlib:
 
 tests: tests.v
 	coqc $(COQOPTS) tests.v
+
+deargtests: testsdearg.v
+	coqc $(COQOPTS) testsdearg.v
+
 
 $(TESTS): $(CFILES)
 	$(CCOMPILER) -o $@_cps -Wno-everything -O2 -fomit-frame-pointer $@_main.c gc.c CertiCoq.Benchmarks.tests.$@_cps.c glue.CertiCoq.Benchmarks.tests.$@_cps.c

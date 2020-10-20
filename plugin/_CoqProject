@@ -262,6 +262,8 @@ extraction/rewriting.ml
 extraction/rewriting.mli
 extraction/round.ml
 extraction/round.mli
+extraction/eLiftSubst.ml
+extraction/eLiftSubst.mli
 extraction/safeErasureFunction.ml
 extraction/safeErasureFunction.mli
 extraction/safeTemplateChecker.ml
@@ -337,6 +339,9 @@ extraction/zbool.mli
 extraction/zpower.ml
 extraction/zpower.mli
 
+# verified dearg optimisation
+extraction/optimize.ml
+extraction/optimize.mli
 
 # plugin
 certicoq.mli

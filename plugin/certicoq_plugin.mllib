@@ -176,6 +176,7 @@ Toplevel3
 Glue_utils
 Glue
 Ffi
+Optimize
 Pipeline
 Certicoq
 G_certicoq

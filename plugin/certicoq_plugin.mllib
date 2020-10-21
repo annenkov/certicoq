@@ -168,6 +168,7 @@ PrintCsyntax
 PrintClight
 L6_to_Clight
 L6_to_Clight_stack
+Optimize
 Toplevel
 Toplevel0
 Toplevel1
@@ -176,7 +177,6 @@ Toplevel3
 Glue_utils
 Glue
 Ffi
-Optimize
 Pipeline
 Certicoq
 G_certicoq

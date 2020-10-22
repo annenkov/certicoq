@@ -66,6 +66,11 @@ $(TESTS): $(CFILES)
 	$(CCOMPILER) -o $@ -Wno-everything -O2 -fomit-frame-pointer $@_main.c gc_stack.c CertiCoq.Benchmarks.tests.$@.c glue.CertiCoq.Benchmarks.tests.$@.c
 	$(CCOMPILER) -o $@_cps_opt -Wno-everything -O2 -fomit-frame-pointer $@_main.c gc.c CertiCoq.Benchmarks.tests.$@_cps_opt.c glue.CertiCoq.Benchmarks.tests.$@_cps_opt.c
 	$(CCOMPILER) -o $@_opt -Wno-everything -O2 -fomit-frame-pointer $@_main.c gc_stack.c CertiCoq.Benchmarks.tests.$@_opt.c glue.CertiCoq.Benchmarks.tests.$@_opt.c
+	$(CCOMPILER) -o $@_dearg_cps -Wno-everything -O2 -fomit-frame-pointer $@_main.c gc.c CertiCoq.Benchmarks.tests.$@_dearg_cps.c glue.CertiCoq.Benchmarks.tests.$@_dearg_cps.c
+	$(CCOMPILER) -o $@_dearg -Wno-everything -O2 -fomit-frame-pointer $@_main.c gc_stack.c CertiCoq.Benchmarks.tests.$@_dearg.c glue.CertiCoq.Benchmarks.tests.$@_dearg.c
+	$(CCOMPILER) -o $@_dearg_cps_opt -Wno-everything -O2 -fomit-frame-pointer $@_main.c gc.c CertiCoq.Benchmarks.tests.$@_dearg_cps_opt.c glue.CertiCoq.Benchmarks.tests.$@_dearg_cps_opt.c
+	$(CCOMPILER) -o $@_dearg_opt -Wno-everything -O2 -fomit-frame-pointer $@_main.c gc_stack.c CertiCoq.Benchmarks.tests.$@_dearg_opt.c glue.CertiCoq.Benchmarks.tests.$@_dearg_opt.c
+
 
 # # Compile with compcert
 # $(TESTS): $(CFILES)

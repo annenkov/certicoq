@@ -36,5 +36,7 @@ Instance L1g_Lang : Lang (Program Term) :=
 Definition dearg_lbox : CertiCoqTrans EAst.program EAst.program :=
   fun p =>
     let ds := analyze_env (fst p) in
+    let ind_masks := trim_ind_masks ds.(ind_masks) in
+    let const_masks := trim_const_masks ds.(const_masks) in
     debug_msg "Removing dead arguments (dearging) Lbox" ;;
-    (LiftErrorCertiCoqTrans "Dearg Lbox" (Basics.compose ret (dearg_prog ds.(ind_masks) ds.(const_masks))) p).
+    (LiftErrorCertiCoqTrans "Dearg Lbox" (Basics.compose ret (dearg_prog ind_masks const_masks)) p).

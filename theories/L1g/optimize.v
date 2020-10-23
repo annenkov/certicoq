@@ -252,7 +252,7 @@ Definition dearg_oib
                    | Some (_, _, mask) => mask
                    | None => []
                    end in
-               (name, count_zeros ctor_mask))
+               (name, bts - count_ones ctor_mask))
             (ind_ctors oib);
      ind_projs := ind_projs oib |}.
 
